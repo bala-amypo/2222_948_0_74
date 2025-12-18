@@ -32,4 +32,7 @@ public class studentEntity{
         this.name=name;
         this.email=email;
     }
+    public studentEntity getbyId(Long id){
+        return repo.findById(id).orElseThrow(() -> new StudentNotFoundException("Student ID not Found"));
+    }
 }
