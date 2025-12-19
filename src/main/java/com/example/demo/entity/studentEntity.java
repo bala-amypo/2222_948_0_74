@@ -1,38 +1,20 @@
-package com.example.demo.entity;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-
-@Entity
-public class studentEntity{
-    
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    
-    @NotBlank(message = "Name is not Valid")
-    private String name;
-
-    @Email(message= "Email Format is not Valid")
-    private String email;
-
-    public void setId(Long id){
-        this.id=id;
-    }
-    public Long getId(){
-        return id;
-    }
-    public studentEntity(){
-
-    }
-    public studentEntity(Long id,String name,String email){
-        this.id=id;
-        this.name=name;
-        this.email=email;
-    }
-    public studentEntity getbyId(Long id){
-        return repo.findById(id).orElseThrow(() -> new StudentNotFoundException("Student ID not Found"));
-    }
+package com.example.demo.entity; 
+ 
+import jakarta.persistence.*; 
+import jakarta.validation.constraints.*; 
+ 
+@Entity 
+public class studentEntity { 
+ 
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private Long id; 
+ 
+    @NotBlank(message = "Name must not be empty") 
+    private String name; 
+ 
+    @Email(message = "Invalid Email format") 
+    @NotBlank(message = "Email must not be empty") 
+    private String email; 
+ 
 }
